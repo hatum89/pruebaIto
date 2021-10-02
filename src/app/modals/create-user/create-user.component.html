@@ -1,0 +1,42 @@
+<mat-form-field class="card-content space" appearance="standard">
+  <mat-label>{{data.name}} {{data.secondName}}</mat-label>
+  <input matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="standard">
+  <mat-label>Roles</mat-label>
+  <input matInput readonly>
+</mat-form-field>
+<mat-card class="card-content">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="field">
+      <mat-form-field appearance="standard">
+        <mat-label>Nombres</mat-label>
+        <input matInput  formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Apellido</mat-label>
+        <input matInput  formControlName="secondName">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Email</mat-label>
+        <input matInput  formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Usuario</mat-label>
+        <input matInput  formControlName="user">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Activo</mat-label>
+        <input matInput  formControlName="available">
+      </mat-form-field>
+    </div>
+    <div class="example-button-container">
+      <div class="button-modal" style="padding-right: 4px">
+        <button (click)="closeDialog()" mat-raised-button color="primary">Cerrar</button>
+      </div>
+      <div class="button-modal">
+        <button type="submit" (click)="save()" mat-raised-button color="primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</mat-card>

@@ -6,7 +6,8 @@ import {MatSort} from '@angular/material/sort';
 import {UserInterface} from '../../interfaces/user';
 import {UserService} from '../../services/user.service';
 import {MatDialog} from '@angular/material/dialog';
-import {CreateComponent} from '../../modals/create/create.component';
+import {InfoUserComponent} from '../../modals/info-user/info-user.component';
+import {CreateUserComponent} from '../../modals/create-user/create-user.component';
 
 
 @Component({
@@ -58,7 +59,20 @@ export class UsersComponent implements OnInit , AfterViewInit {
        this.secondName = result.secondName;
        this.available = result.available;
       });
-    this.matDialog.open(CreateComponent, {
+    this.matDialog.open(InfoUserComponent, {
+      data: {
+        user: this.user,
+        name: this.name,
+        email: this.email,
+        secondName: this.secondName,
+        available: this.available
+      }
+    });
+    this.getUsers();
+    this.dataSource.paginator = this.paginator;
+  }
+  createUser(): void{
+    this.matDialog.open(CreateUserComponent, {
       data: {
         user: this.user,
         name: this.name,

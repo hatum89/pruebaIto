@@ -5,10 +5,10 @@ import {UserInterface} from '../../interfaces/user';
 
 @Component({
   selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  templateUrl: './info-user.component.html',
+  styleUrls: ['./info-user.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class InfoUserComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: UserInterface,
               private matDialog: MatDialog) {
   }

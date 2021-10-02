@@ -19,7 +19,7 @@ describe('UsersComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should info-user', () => {
     expect(component).toBeTruthy();
   });
 });

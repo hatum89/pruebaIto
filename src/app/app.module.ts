@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // angular material
 import {MatCardModule} from '@angular/material/card';
@@ -16,17 +16,19 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { UsersComponent } from './components/users/users.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
-import { CreateComponent } from './modals/create/create.component';
+import { InfoUserComponent } from './modals/info-user/info-user.component';
 import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
+import { CreateUserComponent } from './modals/create-user/create-user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    CreateComponent,
+    InfoUserComponent,
+    CreateUserComponent,
 
   ],
   imports: [
@@ -44,10 +46,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     FormsModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
-    CreateComponent
+    InfoUserComponent
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
