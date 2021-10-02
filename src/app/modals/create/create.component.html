@@ -1,0 +1,36 @@
+<mat-form-field class="card-content space" appearance="standard">
+  <mat-label>{{data.name}} {{data.secondName}}</mat-label>
+  <input matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="standard">
+  <mat-label>Roles</mat-label>
+  <input matInput readonly>
+</mat-form-field>
+
+<mat-card class="card-content">
+  <div class="field">
+      <mat-form-field appearance="standard">
+        <mat-label>Nombres</mat-label>
+        <input matInput  [value]="data.name" readonly>
+      </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Apellido</mat-label>
+      <input matInput  [value]="data.secondName" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Email</mat-label>
+      <input matInput  [value]="data.email" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Usuario</mat-label>
+      <input matInput  [value]="data.user" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Activo</mat-label>
+      <input matInput  [value]="data.available" readonly>
+    </mat-form-field>
+  </div>
+  <div class="button-modal">
+    <button (click)="closeDialog()" mat-raised-button color="primary">Cerrar</button>
+  </div>
+</mat-card>

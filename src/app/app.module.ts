@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {FormsModule} from '@angular/forms';
 
 // angular material
 import {MatCardModule} from '@angular/material/card';
@@ -16,12 +16,17 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { UsersComponent } from './components/users/users.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
+import { CreateComponent } from './modals/create/create.component';
+import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
+    CreateComponent,
 
   ],
   imports: [
@@ -35,9 +40,19 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatPaginatorModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    MatSortModule,
+    MatSelectModule
   ],
-  providers: [],
+  entryComponents: [
+    CreateComponent
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
