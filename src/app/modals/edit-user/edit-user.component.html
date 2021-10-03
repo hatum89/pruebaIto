@@ -1,5 +1,5 @@
 <mat-form-field class="card-content space" appearance="standard">
-  <mat-label></mat-label>
+  <mat-label>{{data.name}} {{data.secondName}}</mat-label>
   <input matInput readonly>
 </mat-form-field>
 <mat-form-field appearance="standard">
@@ -7,40 +7,46 @@
   <input matInput readonly>
 </mat-form-field>
 <mat-card class="card-content">
-  <form [formGroup]="form" (ngSubmit)="save()">
+  <form [formGroup]="form" (ngSubmit)="edit()">
     <div class="field">
       <mat-form-field appearance="standard">
         <mat-label>Nombres</mat-label>
-        <input matInput  formControlName="name">
+        <input matInput formControlName="name"  [value]="data.name">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Apellido</mat-label>
-        <input matInput  formControlName="secondName">
+        <input matInput  [value]="data.secondName">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Email</mat-label>
-        <input matInput  formControlName="email">
+        <input matInput  [value]="data.email">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Usuario</mat-label>
-        <input matInput  formControlName="user">
+        <input matInput  [value]="data.user">
       </mat-form-field>
-      <mat-form-field class="max-width">
-        <mat-label>Estado</mat-label>
-        <mat-select formControlName="available">
-          <mat-option *ngFor="let state of listActive" [value]="state">
-            {{state}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <mat-card class="result">
+        <mat-card-content>
+          <h2 class="example-h2">Activo</h2>
+          <section class="example-section">
+            <mat-slide-toggle formControlName="available"
+                              class="example-margin"
+                              [color]="color"
+                              [checked]="checked"
+                              [disabled]="disabled">
+            </mat-slide-toggle>
+          </section>
+        </mat-card-content>
+      </mat-card>
     </div>
     <div class="example-button-container">
-      <div class="button-modal" style="padding-right: 4px">
+      <div class="button-modal">
         <button (click)="closeDialog()" mat-raised-button color="primary">Cerrar</button>
       </div>
       <div class="button-modal">
-        <button [disabled]="form.invalid" type="submit" mat-raised-button color="primary">Guardar</button>
+        <button type="submit" mat-raised-button color="primary">Aceptar</button>
       </div>
     </div>
   </form>
 </mat-card>
+

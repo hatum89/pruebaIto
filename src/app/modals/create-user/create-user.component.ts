@@ -3,6 +3,7 @@ import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef, MatDialog} from '@angula
 import {UserInterface} from '../../interfaces/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
@@ -11,10 +12,13 @@ import {UserService} from '../../services/user.service';
 export class CreateUserComponent implements OnInit {
   form: FormGroup;
   listActive: any[] = [true, false];
+  public horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  public verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(@Inject(MAT_DIALOG_DATA) public data: UserInterface,
               private matDialog: MatDialog,
               private fb: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private snackBar: MatSnackBar) {
     // nota: en el video no se escucha muy bien cuanto es la cantidad de caracteres.
     this.form = this.fb.group({
       user: ['', Validators.compose([
@@ -44,14 +48,21 @@ export class CreateUserComponent implements OnInit {
   }
 
   save(): void {
-    const user: UserInterface = {
-      user: this.form.value.user,
-      name: this.form.value.name,
-      secondName: this.form.value.secondName,
-      email: this.form.value.email,
-      available: this.form.value.available
-    };
-    this.userService.addUser(user);
+    if (this.form.valid) {
+      const user: UserInterface = {
+        user: this.form.value.user,
+        name: this.form.value.name,
+        secondName: this.form.value.secondName,
+        email: this.form.value.email,
+        available: this.form.value.available
+      };
+      this.userService.addUser(user);
+      this.snackBar.open(`El usuario ${user.name} ha sido creado exitosamente`, 'ok', {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    }
     this.closeDialog();
   }
 }

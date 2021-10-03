@@ -21,6 +21,9 @@ import {MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogR
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import { CreateUserComponent } from './modals/create-user/create-user.component';
+import { EditUserComponent } from './modals/edit-user/edit-user.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -29,6 +32,7 @@ import { CreateUserComponent } from './modals/create-user/create-user.component'
     UsersComponent,
     InfoUserComponent,
     CreateUserComponent,
+    EditUserComponent,
 
   ],
   imports: [
@@ -47,7 +51,9 @@ import { CreateUserComponent } from './modals/create-user/create-user.component'
     FormsModule,
     MatSortModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   entryComponents: [
     InfoUserComponent

@@ -28,7 +28,7 @@ export class UserService {
   }
   edit(user: UserInterface): void{
     this.listUser = this.listUser.map( userSnapshot => {
-      if (userSnapshot.user === user.user) {
+      if (userSnapshot.name === user.name) {
         return user;
       }
       return userSnapshot;

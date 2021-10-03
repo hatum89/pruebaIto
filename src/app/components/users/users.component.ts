@@ -8,6 +8,7 @@ import {UserService} from '../../services/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {InfoUserComponent} from '../../modals/info-user/info-user.component';
 import {CreateUserComponent} from '../../modals/create-user/create-user.component';
+import {EditUserComponent} from '../../modals/edit-user/edit-user.component';
 
 
 @Component({
@@ -73,6 +74,28 @@ export class UsersComponent implements OnInit , AfterViewInit {
   }
   createUser(): void{
     this.matDialog.open(CreateUserComponent, {
+      data: {
+        user: this.user,
+        name: this.name,
+        email: this.email,
+        secondName: this.secondName,
+        available: this.available
+      }
+    });
+    this.getUsers();
+    this.dataSource.paginator = this.paginator;
+  }
+
+  editElement(user): void{
+    this.listUser = this.listUser.filter(userDialog => userDialog.user === user);
+    this.listUser.map((result) => {
+      this.user = result.user;
+      this.name = result.name;
+      this.email = result.email;
+      this.secondName = result.secondName;
+      this.available = result.available;
+    });
+    this.matDialog.open(EditUserComponent, {
       data: {
         user: this.user,
         name: this.name,
