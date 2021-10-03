@@ -50,6 +50,7 @@ export class CreateUserComponent implements OnInit {
   save(): void {
     if (this.form.valid) {
       const user: UserInterface = {
+        id: 0,
         user: this.form.value.user,
         name: this.form.value.name,
         secondName: this.form.value.secondName,

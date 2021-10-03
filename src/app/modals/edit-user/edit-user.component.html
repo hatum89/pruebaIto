@@ -15,15 +15,15 @@
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Apellido</mat-label>
-        <input matInput  [value]="data.secondName">
+        <input matInput formControlName="secondName"   [value]="data.secondName">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Email</mat-label>
-        <input matInput  [value]="data.email">
+        <input matInput formControlName="email"  [value]="data.email">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Usuario</mat-label>
-        <input matInput  [value]="data.user">
+        <input matInput formControlName="user"  [value]="data.user">
       </mat-form-field>
       <mat-card class="result">
         <mat-card-content>

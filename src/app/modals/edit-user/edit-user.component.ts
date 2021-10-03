@@ -10,6 +10,7 @@ import {ThemePalette} from '@angular/material/core';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
+
   listActive: any[] = [true, false];
   form: FormGroup;
   color: ThemePalette = 'primary';
@@ -43,21 +44,21 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   closeDialog(): void {
     this.matDialog.closeAll();
   }
 
   edit(): void {
-   const user: UserInterface = {
+    const user: UserInterface = {
+       id: this.data.id,
        user: this.form.value.user,
        name: this.form.value.name,
        email: this.form.value.email,
        secondName: this.form.value.secondName,
        available: this.form.value.available,
    };
-   console.log(user);
-   const dta = this.userService.edit(user);
-   console.log(dta);
-   // this.matDialog.closeAll();
+    this.userService.edit(user);
+    this.matDialog.closeAll();
   }
 }

@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit , AfterViewInit {
   private email: string;
   private secondName: string;
   private available: boolean;
+  private id: number;
 
   constructor(private userService: UserService,
               private matDialog: MatDialog) {
@@ -54,6 +55,7 @@ export class UsersComponent implements OnInit , AfterViewInit {
   searchElement(user): void {
     this.listUser = this.listUser.filter(userDialog => userDialog.user === user);
     this.listUser.map((result) => {
+       this.id = result.id;
        this.user = result.user;
        this.name = result.name;
        this.email = result.email;
@@ -62,6 +64,7 @@ export class UsersComponent implements OnInit , AfterViewInit {
       });
     this.matDialog.open(InfoUserComponent, {
       data: {
+        id: this.id,
         user: this.user,
         name: this.name,
         email: this.email,
@@ -72,6 +75,7 @@ export class UsersComponent implements OnInit , AfterViewInit {
     this.getUsers();
     this.dataSource.paginator = this.paginator;
   }
+
   createUser(): void{
     this.matDialog.open(CreateUserComponent, {
       data: {
@@ -87,24 +91,17 @@ export class UsersComponent implements OnInit , AfterViewInit {
   }
 
   editElement(user): void{
-    this.listUser = this.listUser.filter(userDialog => userDialog.user === user);
-    this.listUser.map((result) => {
-      this.user = result.user;
-      this.name = result.name;
-      this.email = result.email;
-      this.secondName = result.secondName;
-      this.available = result.available;
+    const dialogRef = this.matDialog.open(EditUserComponent, {
+      data: user
     });
-    this.matDialog.open(EditUserComponent, {
-      data: {
-        user: this.user,
-        name: this.name,
-        email: this.email,
-        secondName: this.secondName,
-        available: this.available
-      }
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getUsers();
+      this.dataSource.paginator = this.paginator;
     });
+
     this.getUsers();
     this.dataSource.paginator = this.paginator;
   }
+
 }
